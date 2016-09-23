@@ -1,10 +1,3 @@
-From: nicolecamoro@gmail.com Franchette Camoro 
-To:  
-Date: Wed, 24 Aug 2016 10:51:42 +0800 
-Subject: Re: draft 
- 
-AUG 24
-
 @echo off
 
 :START
