@@ -5,3 +5,4 @@
 - [FINDSTR](http://ss64.com/nt/findstr.html)
 - [ATTRIB](http://ss64.com/nt/attrib.html)
 - [Auto increment](http://stackoverflow.com/questions/21697199/how-to-increment-variable-under-dos)
+- [Arrays](http://superuser.com/questions/191224/populating-array-in-dos-batch-script)
