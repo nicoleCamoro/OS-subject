@@ -1,5 +1,6 @@
 @echo off
 
+
 :setRoot
 echo.
 echo.
@@ -12,25 +13,46 @@ echo.
 goto RootSearch 
 
 :RootSearch
-set /p drive=Type the letter of the drive you want to search in:
+set /p drive="Type the letter of the drive you want to search in: "
 %drive%:
 echo.
 echo.
 dir %drive%: >nul 2>nul
-if not %errorlevel%==1 goto DISPLAYrootSearch
-if %errorlevel%==1 goto rootSearchError
+if not %errorlevel%==1 (goto DISPLAYrootSearch)
+if %errorlevel%==1 (goto rootSearchError)
 
 :DISPLAYrootSearch
-echo You are now in drive %drive%:\
+cd %drive%:\
+echo You are now in drive %drive%
+pause
+cls
 echo.
 echo Type a keyword to search files and folders: 
-set p/ searchFile=
-if [%searchFile%]=[] goto keywordError
+set /p searchFile=
+if [%searchFile%]==[] (goto keywordError)
+goto STARTsearch
+
 
 :keywordError
+cls
 echo Please enter a keyword
 goto DISPLAYrootSearch
+
 
 :rootSearchError
 echo Choose a letter from the above choices
 goto setRoot
+
+:STARTsearch
+echo.
+echo.
+
+for /f "skip=1 delims=" %%x in (
+  'attrib  *%searchFile%*.* /s '
+  ) do (
+  	@echo.%%x
+  )
+
+echo Done with search
+echo. 
+pause
