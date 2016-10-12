@@ -1,6 +1,5 @@
 @echo off
 
-
 :setRootManage
 echo.
 echo.
@@ -73,6 +72,7 @@ echo.
 echo Displaying parent folder contents
 PING -n 2 127.0.0.1>nul
 dir . /b
+pause
 goto renameFolder
 
 :folderErr2
@@ -83,11 +83,30 @@ goto newChild
 :renameFolder
 cls
 dir . /b
-pause
 echo.
 echo Do you want to rename a folder (yn)?
 choice /c yn
-if %errorlevel% y goto renameFolder
+echo %errorlevel%
+pause
+if %errorlevel%==1 goto renameFolder
+if %errorlevel%==2 goto noRenameFolder
 
 :renameFolder
+cls
+echo Current folders:
+dir . /b
+echo.
+echo Folder to be renamed: 
+set /p oldfolder=
+echo.
+echo New folder name:
+set /p newFolder=
+echo.
+echo.
+echo Renaming %oldfolder% to %newFolder%
+rename %oldfolder% %newFolder%
+pause
+
+:noRenameFolder
+echo. Going back to main menu
 pause
