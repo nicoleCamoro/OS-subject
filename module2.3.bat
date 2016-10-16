@@ -26,8 +26,8 @@ echo You are now in drive %drive%
 pause
 cls
 echo.
-echo Create new folder: 
-set /p parentFolderName=Folder name: 
+echo Create new folder:
+set /p parentFolderName=Folder name:
 if [%parentFolderName%]==[] (goto folderErr)
 goto createParent
 
@@ -54,7 +54,7 @@ goto newChild
 
 :newChild
 echo Create new child folder
-set /p childFolderName=Folder name: 
+set /p childFolderName=Folder name:
 if [%childFolderName%]==[] (goto folderErr2)
 goto createChild
 
@@ -96,7 +96,7 @@ cls
 echo Current folders:
 dir . /b
 echo.
-echo Folder to be renamed: 
+echo Folder to be renamed:
 set /p oldfolder=
 echo.
 echo New folder name:
@@ -109,4 +109,5 @@ pause
 
 :noRenameFolder
 echo. Going back to main menu
+call module1.1.bat
 pause
