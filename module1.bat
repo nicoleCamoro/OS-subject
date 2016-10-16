@@ -20,10 +20,17 @@ goto option-%errorlevel%
 cls
 echo.
 echo login
+echo --------------
+set /P un=Username:
+set /P pw=Password:
+if [%un%]==[] goto option-1
+if [%pw%]==[] goto option-1
+pause
+FIND "%un%%pw$%" uname.dll
+if %errorlevel% == 0 call module1.1.bat
+if %errorlevel% == 1 echo Does not recognize username or password
 pause
 goto START
-
-
 
 
 :option-2
@@ -31,15 +38,15 @@ cls
 echo.
 echo Register
 echo --------------
-set /P username=Username: || set username=blank
-set /P password=Password: || set password=blank
+set /P username=Username:
+set /P password=Password:
+if [%username%]==[] goto option-2
+if [%password%]==[] goto option-2
 
-echo %username% >> uname.dll
-echo %password% >> pass.dll
-
-
-pause
-goto option-1
+echo %username%%password% >> uname.dll
+echo.
+echo Registration done!
+goto START
 
 :option-3
 cls
