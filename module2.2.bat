@@ -10,7 +10,7 @@ for /f "skip=1 delims=" %%x in (
   'wmic logicaldisk get caption'
   ) do @echo.%%x
 echo.
-goto RootSearch 
+goto RootSearch
 
 :RootSearch
 set /p drive="Type the letter of the drive you want to search in: "
@@ -27,7 +27,7 @@ echo You are now in drive %drive%
 pause
 cls
 echo.
-echo Type a keyword to search files and folders: 
+echo Type a keyword to search files and folders:
 set /p searchFile=
 if [%searchFile%]==[] (goto keywordError)
 goto STARTsearch
@@ -47,12 +47,14 @@ goto setRoot
 echo.
 echo.
 
-for /f "skip=1 delims=" %%x in (
-  'attrib  *%searchFile%*.* /s '
-  ) do (
-  	@echo.%%x
-  )
-
+REM for /f "skip=1 delims=" %%x in (
+REM   'attrib  *%searchFile%*.* /D /S'
+REM   ) do (
+REM   	@echo.%%x
+REM   )
+attrib  *%searchFile%*.* /D /S
+echo.
+echo.
 echo Done with search
-echo. 
+echo.
 pause
