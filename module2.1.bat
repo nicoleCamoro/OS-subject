@@ -75,10 +75,11 @@ echo.
 echo Choose next action:
 echo [1] Go to main menu
 echo [2] Log out
-choice /c 12 /n 
+choice /c 12 /n
 if %errorlevel%==1 goto ROOT
 if %errorlevel%==2 goto LOGOUT
 pause
+
 
 :eDISPLAY2
 echo We couldn't find the folder specified
